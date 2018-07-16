@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <!-- for setter method -->
+    <!--<bean id="injectionService" class="top.linhuarui.spring.ioc.injection.service.impl.InjectionServiceImpl">-->
+        <!--<property name="injectionDao" ref="injectionDao"></property>-->
+    <!--</bean>-->
+
+    <!--<bean id="injectionDao" class="top.linhuarui.spring.ioc.injection.dao.impl.InjectionDaoImpl">-->
+    <!--</bean>-->
+
+    <!-- for constructor method -->
+    <bean id="injectionService" class="top.linhuarui.spring.ioc.injection.service.impl.InjectionServiceImpl">
+        <constructor-arg name="injectionDao" ref="injectionDao"></constructor-arg>
+    </bean>
+
+    <bean id="injectionDao" class="top.linhuarui.spring.ioc.injection.dao.impl.InjectionDaoImpl">
+    </bean>
+
+</beans>
