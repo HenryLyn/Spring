@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <!-- singleton -->
+    <!--<bean id="beanScope" class="top.linhuarui.spring.bean.beanscope.BeanScope" scope="singleton"></bean>-->
+
+    <!-- prototype -->
+    <bean id="beanScope" class="top.linhuarui.spring.bean.beanscope.BeanScope" scope="prototype"></bean>
+</beans>
