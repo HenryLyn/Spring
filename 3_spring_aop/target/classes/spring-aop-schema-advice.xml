@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+  <bean id="selfAspect" class="top.linhuarui.spring.aop.SelfAspect" ></bean>
+  <bean id="aspectBiz" class="top.linhuarui.spring.aop.biz.AspectBiz"></bean>
+
+  <aop:config>
+    <aop:aspect id="selfAspectAOP" ref="selfAspect">
+      <aop:pointcut id="selfPointcut" expression="execution(* top.linhuarui.spring.aop.*Biz.*(..))"></aop:pointcut>
+      <aop:before method="before" pointcut-ref="selfPointcut"></aop:before>
+      <aop:after-returning method="afterReturning" pointcut-ref="selfPointcut"></aop:after-returning>
+      <aop:after-throwing method="afterThrowing" pointcut-ref="selfPointcut"></aop:after-throwing>
+      <aop:after method="after" pointcut-ref="selfPointcut"></aop:after>
+      <aop:around method="around" pointcut-ref="selfPointcut"></aop:around>
+
+      <aop:around method="aroundInit" pointcut="execution(* top.linhuarui.spring.aop.biz.AspectBiz.init(String, int)) and args(bizName, times)"></aop:around>
+
+      <aop:declare-parents types-matching="top.linhuarui.spring.aop.biz.*(+)"
+                           implement-interface="top.linhuarui.spring.aop.Fit"
+                           default-impl="top.linhuarui.spring.aop.impl.FitImpl"></aop:declare-parents>
+    </aop:aspect>
+  </aop:config>
+
+ </beans>
