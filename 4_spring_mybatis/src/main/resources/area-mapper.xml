@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.linhuarui.spring.entity.mapper.AreaMapper">
+  <select id="getArea" resultType="area" parameterType="int">
+        select * from tb_area where area_id = #{id}
+    </select>
+  <insert id="insertArea" parameterType="area">
+        INSERT INTO tb_area(area_id, priority, create_time, last_edit_time) VALUES (#{area_id},#{priority},#{create_time}, #{last_edit_time})
+    </insert>
+  <delete id="deleteArea" parameterType="int">
+        DELETE FROM tb_area where area_id=#{id}
+    </delete>
+</mapper>
